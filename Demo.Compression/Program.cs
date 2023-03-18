@@ -1,24 +1,12 @@
 ﻿using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using System.Diagnostics;
-using System.IO.Compression;
-using System.Text;
-using System.Text.Json;
 
 namespace Demo.Compression
 {
-    /// <summary>
-    /// Original Article:
-    /// https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-compress-and-extract-files
-    /// 
-    /// Basic compression and decompression classes:
-    /// https://learn.microsoft.com/en-us/dotnet/api/system.io.compression?view=net-7.0
-    /// </summary>
     internal class Program
     {
-        private const string directoryPath = @".\temp";
-
-        private static async Task Main()
+        private static Task Main()
         {
             Stopwatch sw = Stopwatch.StartNew();
             sw.Start();
@@ -61,6 +49,7 @@ namespace Demo.Compression
 
             sw.Stop();
             Console.WriteLine($"\nElapsed Milliseconds: {sw.ElapsedMilliseconds}");
+            return Task.CompletedTask;
         }
 
         private static void Print(string value, ConsoleColor consoleTextColor = ConsoleColor.DarkCyan)
